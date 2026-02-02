@@ -3,27 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Neighbourhoods - Launching Soon</title>
+    <title>The Neighbourhoods - Coming Soon</title>
+    <meta name="description" content="Discover the heart of every Calgary neighbourhood. Coming soon - celebrate what makes each community special.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            height: 100%;
+        * {
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Prevent scrolling */
+            box-sizing: border-box;
         }
-        .landing-page-background {
-            /* Use the attached image as a full-screen background */
+
+        :root {
+            --calgary-red: #C8102E;
+            --soft-red: #E63946;
+            --calgary-grey: #6B7280;
+            --white: #FFFFFF;
+            --black: #1A1A1A;
+            --light-grey: #F3F4F6;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--light-grey);
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--calgary-red) 0%, var(--soft-red) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background-image: url('images/background.jpg');
-            height: 100%;
-            /* Center and scale the image nicely */
-            background-position: center;
-            background-repeat: no-repeat;
             background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            color: var(--white);
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo svg {
+            width: 80px;
+            height: 80px;
+            fill: var(--white);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .tagline {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            font-size: 0.9375rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .email-signup {
+            margin-top: 3rem;
+        }
+
+        .email-signup p {
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--black);
+        }
+
+        .form input:focus {
+            outline: 2px solid var(--white);
+            outline-offset: -2px;
+        }
+
+        .form button {
+            padding: 1rem 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form button:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+
+        .info {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--white);
+        }
+
+        .info h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--calgary-red);
+        }
+
+        .info p {
+            font-size: 1.125rem;
+            color: var(--calgary-grey);
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .footer p {
+            opacity: 0.7;
+            font-size: 0.875rem;
+        }
+
+        .footer a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .footer a:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 1.5rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .form {
+                flex-direction: column;
+            }
+
+            .form input,
+            .form button {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="landing-page-background">
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M20 75 L20 45 L50 25 L80 45 L80 75 L65 75 L65 55 L35 55 L35 75 Z"/>
+                    <rect x="25" y="60" width="10" height="15" fill="white"/>
+                    <rect x="65" y="60" width="10" height="15" fill="white"/>
+                    <circle cx="50" cy="45" r="8" fill="white"/>
+                </svg>
+            </div>
+
+            <div class="badge">Coming Soon</div>
+
+            <h1>The Neighbourhoods</h1>
+            <p class="tagline">Discover the heart of every Calgary neighbourhood</p>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Every Community</h3>
+                    <p>Explore all Calgary neighbourhoods with authentic, local stories</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Interactive Maps</h3>
+                    <p>Visualize each area with detailed location insights</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💝</div>
+                    <h3>Community Pride</h3>
+                    <p>Celebrate what makes each neighbourhood special</p>
+                </div>
+            </div>
+
+            <div class="email-signup">
+                <p>Be the first to know when we launch</p>
+                <form class="form" onsubmit="event.preventDefault(); alert('Thanks for subscribing! We\'ll notify you when we launch.');">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Notify Me</button>
+                </form>
+            </div>
         </div>
+    </section>
+
+    <section class="info">
+        <h2>Building Something Special</h2>
+        <p>We're creating a platform to showcase the positive aspects of every single Calgary neighbourhood — creating connection, pride, and appreciation for our communities through authentic, data-driven stories.</p>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 The Neighbourhoods. Made with ❤️ in Calgary</p>
+    </footer>
 </body>
 </html>
