@@ -293,8 +293,11 @@
 
             <div class="email-signup">
                 <p>Be the first to know when we launch</p>
-                <form class="form" onsubmit="event.preventDefault(); alert('Thanks for subscribing! We\'ll notify you when we launch.');">
-                    <input type="email" placeholder="Enter your email" required>
+                <form class="form" action="https://formsubmit.co/theneighbourhoodscanada@gmail.com" method="POST">
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <input type="hidden" name="_subject" value="New Signup - The Neighbourhoods">
+                    <input type="hidden" name="_autoresponse" value="Thanks for signing up! We'll notify you when we launch.">
+                    <input type="hidden" name="_template" value="table">
                     <button type="submit">Notify Me</button>
                 </form>
             </div>
