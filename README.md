@@ -1,1 +1,1 @@
-See KenStaples.com for author information
+See kenstaples.com for author information
